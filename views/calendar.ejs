@@ -1,0 +1,125 @@
+<html>
+   <head>
+        <title>
+
+        </title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+        <meta name="viewport" content="width=device-width, user-scalable=no" />
+        <script src="script-calendar.js" data-active="<%= JSON.stringify(ALL_TASKS) %>" defer></script>  
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   </head>
+   <body>
+    <div id="page" class="page">
+            <div id="pop-up" class="pop-up">
+
+            </div>
+            <div class="bin-col">
+                <div class="top-nav">
+                    <div class="home">
+                        <button class="home-button">
+                            <img src="images/solar_archive-check-broken.svg" alt="">
+                            <a>Calendar</a>
+                        </button>
+                    </div>
+                    <div class="add-task">
+                        <button onclick= popUpTask()>
+                            <a>Add Task</a>
+                        </button>
+                    </div>
+                </div>
+                <div class="bin-50 calendar-lower">
+                    <%- include("partials/side-nav") -%>
+                    <div class="bin-col calendar-page">
+                        <div class="calendar-header calendar-page-header">
+                            <button onclick=nextMonth(-7)><img src="icons/arrow-left.png" alt=""></button>
+                            <h2 id="month-header" class="calendar-month"></h2>
+                            <button onclick=nextMonth(7)><img src="icons/arrow-right.png" alt=""></button>
+                        </div>
+                        <div id="calendar-bin" class="bin-50 calendar-bin">
+                            <%
+                                let thisWeeksDates = []
+                                today = new Date();
+                                today.setHours(0,0,0,0);
+                                if(today.getDay() == 0){
+                                    for(let i=6; i >=0; i--){
+                                        let newDate = new Date;
+                                        newDate.setDate(newDate.getDate()-i)
+                                        thisWeeksDates.push(newDate);
+                                    } 
+                                } else {
+                                    for(let i=1; i<=7; i++){
+                                        if(today.getDay() == i){
+                                            thisWeeksDates.push(today);
+                                        } else if (today.getDay() > i) {
+                                            let negDistance = today.getDay() - i
+                                            let newDate = new Date()
+                                            newDate.setDate(newDate.getDate() - negDistance)
+                                            newDate.setHours(0,0,0,0);
+                                            thisWeeksDates.push(newDate)
+                                        } else if (today.getDay() < i){
+                                            let posDistance = i -today.getDay()
+                                            let newDate = new Date()
+                                            newDate.setDate(newDate.getDate() + posDistance)
+                                            newDate.setHours(0,0,0,0);
+                                            thisWeeksDates.push(newDate)
+                                        }
+                                    }
+                                }
+                            %><%
+                                thisWeeksDates.forEach( function (date) {
+                                    let taskListforDate = [];
+                                    let weekDays =["Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+                                    dayOfWeekInt = date.getDay();
+                                    let dayOfWeek = weekDays[dayOfWeekInt];
+                                
+                                    ACTIVE_TASKS.forEach( function(task) {
+                                        let taskDeadline = task.deadline.setHours(0,0,0,0);
+                                        let dateFormatted = date.setHours(0,0,0,0);
+                                        
+                                        if(taskDeadline >= dateFormatted && taskDeadline <= dateFormatted){
+                                            taskListforDate.push(task);
+                                        }
+                                    })
+
+                                    let dayOfWeekStr = dayOfWeekInt.toString();
+                                    let taskTitleId =dayOfWeekStr+"-task-title-bin-calendar"
+
+                                    %>
+                                    <div class="bin-col date-card">
+                                        <div>
+                                            <p id="<%= date.getDay() %>" class="month-header"><%= date.getDate() %></p>
+                                            <p><%= dayOfWeek %></p>
+                                        </div>
+                                        <div id= "<%= taskTitleId%>" class="task-title-bin-calendar">
+                                            <% taskListforDate.forEach( function(task) { %>
+                                                <% if(task.priority == 1){ %>
+                                                    <div class="high-priority">
+                                                        <h3 class="calendar-task-title"><%= task.taskTitle %> </h3>
+                                                    </div>
+                                                <% } else if (task.priority == 2) { %>
+                                                    <div class="mid-priority">
+                                                        <h3 class="calendar-task-title"><%= task.taskTitle %> </h3>
+                                                    </div>
+                                                <% } else { %>
+                                                    <div class="low-priority">
+                                                        <h3 class="calendar-task-title"><%= task.taskTitle %> </h3>
+                                                    </div>
+                                                <% } %>
+                                                    
+                                            <% }) %>
+                                        </div>
+                                    </div>
+                                <% }) %> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+   </body>
+   
+   
+   </html>

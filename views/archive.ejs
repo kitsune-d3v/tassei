@@ -1,0 +1,83 @@
+<html>
+   <head>
+        <title>
+
+        </title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+        <meta name="viewport" content="width=device-width, user-scalable=no" />
+        <script src="script-calendar.js" data-active="<%= JSON.stringify(COMP_TASKS) %>" defer></script>  
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   </head>
+   <body>
+    <div id="page" class="page">
+            <div id="pop-up" class="pop-up">
+
+            </div>
+            <div class="bin-col">
+                <div class="top-nav">
+                    <div class="archive">
+                        <button class="archive-button">
+                            <img src="images/solar_archive-check-broken.svg" alt="">
+                            <a>Archived Tasks</a>
+                        </button>
+                    </div>
+                    <div class="add-task">
+                        <button onclick= popUpTask()>
+                            <a>Add Task</a>
+                        </button>
+                    </div>
+                </div>
+                <div class="bin-50 calendar-lower">
+                    <%- include("partials/side-nav") -%>
+                    <div class="bin-col calendar-page">
+                        <div class="calendar-header calendar-page-header">
+                            <button class="button-back" onclick=archiveNextMonth(-1)><img src="icons/arrow-left.png" alt=""></button>
+                            <h2 id="month-header" class="calendar-month"></h2>
+                            <button class="button-forward" onclick=archiveNextMonth(1)><img src="icons/arrow-right.png" alt=""></button>
+                        </div>
+                        <div id="comp-task-list" class="bin-col comp-task-list">
+                            <% 
+                                date = new Date();
+                                COMP_TASKS.forEach( (task) => {
+                                    if (date.getMonth()+1 == task.deadline.getMonth()+1) {
+                                        
+                                        %>  <div class="bin-50 task dashboard-card">
+                                                <div class="bin-50 task-icon-date-tasks">
+                                                    <img class="task-icon" src="icons/Vector.svg" alt="">
+                                                    <div class="task-date">
+                                                        <p>Task From: </p>
+                                                        <p><%=task.dateMadeStr%></p>
+                                                    </div>
+                                                </div>
+                                                <div class="task-title">
+                                                    <p><%= task.taskTitle %></p>
+                                                </div>
+                                                <div class="task-date archive-task-date">
+                                                    <p>Task Deadline:</p>
+                                                    <p><%= task.deadlineStr %></p>
+                                                </div>
+                                                <div class="task-date archive-task-date">
+                                                    <p>Completed: </p>
+                                                    <p><%= task.dateCompStr %></p>
+                                                </div>
+                                                <div class="task-complete-archive">
+                                                    <button class="task-button"><a class="task-button-complete" href="/delete/<%= task._id%>">Delete</a></button>
+                                                </div>
+                                            </div>
+                            <%        }
+                                    
+                                })
+                            %>  
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </body>
+   
+   
+   </html>

@@ -1,0 +1,32 @@
+<html>
+   <head>
+        <title>
+
+        </title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/styles.css">
+        <meta name="viewport" content="width=device-width, user-scalable=no" />
+   </head>
+   <body>
+    <div class="bin-col"> 
+        <form class="bin-col" id="insertTask" action="/create" method="POST">
+            <label for="task-title">Title of Task:</label>
+            <input id="task-title" type="text" name="taskTitle">
+            <label for="task-desc">Task Description: </label>
+            <textarea id="task-desc" form="insertTask" name="taskDesc"></textarea>
+            <label for="priority">Priority:</label>
+            <select name="priority" id="priority" form-id="insertTask">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+            <label for="deadline">Date to be completed:</label> 
+            <input id="deadline" type="date" name="deadline">
+            <input type="submit">
+        </form>
+    </div>
+   </body>
+</html>

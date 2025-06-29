@@ -1,0 +1,29 @@
+<div>
+    <canvas id="active-graph"></canvas>
+    <% 
+      let counterActive = 0
+      let counterComp = 0 %>
+      ACTIVE_TASKS.forEach((task) => {
+        if (task.deadline == today) {
+           counterActive++
+      }})
+      COMP_TASKS.forEach((task) => {
+          if (task.deadline <= TODAY) {
+            counterComp++
+      }})
+      console.log(counterActive);
+      console.log(counterComp);
+      new Chart("active-graph", {
+        type: "doughnut",
+          data: {
+            labels: ["Tasks to do", "Tasks Completed"],
+            datasets: {
+                data: [counterActive, counterComp]}
+          },
+          options: {}}
+           ) 
+    %>
+</div>
+<div>
+    <canvas id="comp-graph"></canvas>
+</div>

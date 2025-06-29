@@ -1,0 +1,70 @@
+<%- include("partials/header"); -%>
+<body>
+    <!-- Validate Login creds and verify Department and Admin rights-->
+    <!--Retrive List of Employees working in a department-->
+    <!-- Display list of Employees-->
+    <div>
+        <form id="schedule-form" action="/schedule/<%dept%>" method="GET">
+            <% DEPARTMENTS.forEach(function(dept){ %>
+                <input name="department" value="<%=dept%>" type="submit" onclick="changeContent()"></input>
+            <% }) %>
+        </form>
+    </div>
+    <div id="Employees">
+        <h2 id="EMP"></h2>
+
+    </div>
+    <!--
+    <form method="POST" action="/admin">
+        Add Username for New Employee: <input type="text" name="userName">
+        Add Default Password for New Employee: <input type="text" name="password">
+        Date of Birth: <input type="date" min="01-01-1905" max="01-01-2015" name="dob">
+        <label for="department">Select a Department for the Employee</label>
+        <select id="department" name="department">
+            <option value="hr">Human Resources</option>
+            <option value="it">Informatics</option>
+            <option value="gm">General Management</option>
+            <option value="marketing">Marketing</option>
+        </select>
+        <label for="role">Select a Department for the Employee</label>
+        <select id="role" name="role">
+            <option value="employee">Employee</option>
+            <option value="manager">Manager</option>
+            <option value="admin">Administration</option>
+        </select>
+        <label for="admin">Should the Employee have Administration Rights on this Platform?</label>
+        <select id="admin" name="admin">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>-->
+        <!-- Redirect to next Phase of the employee Info = adding Starter Tasks and a schedule -->
+       <!-- <input onclick="redirect()" type="submit">
+    </form> -->
+</body>
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  crossorigin="anonymous"></script>
+<script>
+    function changeContent () {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("EMP").innerHTML =
+        "test";
+        }
+    };
+    xhttp.open("GET", "res", true);
+    xhttp.send();
+    }
+    
+</script>
+</html>
+
+    username: String,
+    password: String,
+    dob: Date,
+    role: String,
+    admin: Boolean,
+    tasks: Array,
+    schedule: Array

@@ -1,0 +1,73 @@
+<html>
+   <head>
+        <title>
+
+        </title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+        <meta name="viewport" content="width=device-width, user-scalable=no" />
+        <script src="script-calendar.js" defer></script>  
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   </head>
+   <body>
+    <div id="page" class="page">
+        <div id="pop-up" class="pop-up">
+
+        </div>
+        <div class="top-nav">
+            <div class="home">
+                <button class="home-button">
+                    <img src="images/solar_archive-check-broken.svg" alt="">
+                        <a>Tasks</a>
+                </button>
+            </div>
+            <div class="add-task">
+                <button>
+                    <a href="/create">Add Task</a>
+                </button>
+            </div>
+        </div>
+        <div class="dashboard-page">
+            <%- include("partials/side-nav") -%>
+            <div class="bin-col tasks-container">
+                <div class="calendar-page-header calendar-header">
+                    <h2>My Active Tasks</h2>
+                </div>
+                <div class="bin-col task-bin">
+                    <% ACTIVE_TASKS.forEach( (task) => { %>
+                        <div class="task dashboard-card">
+                            <div class="bin-50 task-icon-date-tasks">
+                                <% if (task.deadline > TODAY){ %>
+                                    <div class="bin-task-icon-delayed">
+                                        <img class="task-icon task-delayed" src="icons/Vector.svg" alt="">
+                                    </div>
+                                <% } else { %>
+                                    <div class="bin-task-icon-on-time">
+                                        <img class="task-icon task-on-time" src="icons/Vector.svg" alt="">
+                                    </div>
+                                <% } %>
+                                <div class="task-date">
+                                    <p>Task from:</p>
+                                    <p><%= task.dateMadeStr %></p>
+                                </div>
+                            </div>
+                            <div class="task-title">
+                                <p><%= task.taskTitle %></p>
+                            </div>
+                            <div class="task-progress">
+                                <div><p class="task-desc"><%= task.task %></p></div>
+                            </div>
+                            <div class="task-complete">
+                                <button class="task-button"><a class="task-button-complete" href="/complete/<%= task._id%>">Mark as Completed</a></button>
+                            </div>
+                        </div>
+
+                    <%   })%>  
+                </div>
+            </div>
+        </div>
+    </div>
+   </body>
+</html>

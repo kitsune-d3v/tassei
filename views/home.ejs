@@ -1,0 +1,208 @@
+<html>
+   <head>
+        <title>
+
+        </title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+        <meta name="viewport" content="width=device-width, user-scalable=no" />
+        <script src="script.js" defer></script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        
+        
+   </head>
+   <body>
+        <div id="page" class="page">
+            <div id="pop-up" class="pop-up">
+
+            </div>
+            <%- include("partials/top-nav") -%>
+            <div id="dashboard-page" class="dashboard-page">
+                <%- include("partials/side-nav") -%>
+                
+                <div id="dashboard-inner" class="bin-col dashboard-inner">
+                    <div class="bin-50 dashboard-upper">
+                        <div class="bin-col dashboard-left">
+                            <div class="dashboard-upper-left">
+                                <div class="bin-welcome">
+                                    <div class="bin-50 inner-bin-welcome">
+                                        <div>
+                                            <h1 class="make-it-white">Hi, Jonathan</h1>
+                                            <h2 class="make-it-white">Let’s finish your tasks today!</h2>
+                                        </div>
+                                        <img src="images/welcome-graphic.png" alt="">
+                                    </div> 
+                                </div>
+                            </div>
+                            <div id="dashboard-left-lower" class="bin-50" >
+                                <div class="bin-50 left-lower-headings">
+                                    <div class="bin-col left-lower-card">
+                                        <div>
+                                            <h2>Calendar</h2>
+                                        </div>
+                                        <div class="bin-calendar dashboard-card">
+                                            <div class="calendar-header-home ">
+                                                <button class="button-back"><img src="icons/arrow-left.png" alt=""></button>
+                                                <h2 id="calendar-month" class="calendar-month"></h2>
+                                                <button class="button-forward"><img src="icons/arrow-right.png" alt=""></button>
+                                            </div>
+                                            <div class="calendar">
+                                                <div class="calendar-weekdays">
+                                                    <p>Mo</p>
+                                                    <p>Tu</p>
+                                                    <p>Wed</p>
+                                                    <p>Thurs</p>
+                                                    <p>Fri</p>
+                                                    <p>Sat</p>
+                                                    <p>Sun</p>
+                                                </div>
+                                                <div class="bin-calendar-dates">
+                                                    <ul id="calendar-dates" class="calendar-dates"></ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bin-col left-lower-card bin-analytics-home">
+                                        <div>
+                                            <h2>Task Overview</h2>
+                                        </div>
+                                        <div class=" bin-col dashboard-card">
+                                            <div class="bin-50 analytics-bin">
+                                                <canvas id="activeGraph" width="200px" height="200px"></canvas>
+                                                <script>
+
+                                                    let active = <%- ACTIVE_TASKS.length %>
+                                                    let comp = <%- COMP_TASKS.length %>
+                                                    new Chart("activeGraph", {
+                                                    type: "doughnut",
+                                                    data: {
+                                                        labels: ["Open Tasks", "Completed Tasks"],
+                                                        datasets: [{
+                                                            data: [active, comp],
+                                                            backgroundColor: [
+                                                                'rgb(107 204 169)',
+                                                                'rgba(107, 204, 169, 0.30)'
+                                                            ]
+                                                            }]
+                                                        },
+                                                        options: {
+                                                            responsive: false,
+                                                            layout: {
+                                                                padding: 10
+                                                            },
+                                                            plugins: {
+                                                                legend: {
+                                                                    display: false
+                                                                },
+                                                            },
+                                                        }
+                                                    })                
+                                                </script>
+                                                <div class="bin-col analytics-text">
+                                                    <div class="bin-col">
+                                                        <p>Open Tasks: </p>
+                                                        <p><%= ACTIVE_TASKS.length %></p>
+                                                    </div>
+                                                    <div class="bin-col">
+                                                        <p>Total Completed Tasks:</p>
+                                                        <p> <%= COMP_TASKS.length %></p>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <img src="" alt="">
+                                                <h2 id="header-open-tasks"></h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div id="dashboard-lower" class="dashboard-right">
+                            <div>
+                                <h2>Open Tasks for Today</h2>
+                            </div>
+                            <div class="bin-tasks">
+                                <% for (let i=0; i < ACTIVE_TASKS.length && i < 2; i++) { %>
+                                    <div id=<%= ACTIVE_TASKS[i]._id %> class="task-home dashboard-card">
+                                        <div class="bin-50 title-date-bin">
+                                            <div class="task-title-home">
+                                                <p><%= ACTIVE_TASKS[i].taskTitle %></p>
+                                            </div>
+                                            
+                                            <div class="task-icon-date-home">
+                                                <% if (ACTIVE_TASKS[i].deadline < TODAY){ %>
+                                                    <div class="bin-task-icon-delayed">
+                                                        <img class="task-icon task-delayed" src="icons/Vector.svg" alt="">
+                                                    </div>
+                                                <% } else { %>
+                                                    <div class="bin-task-icon-on-time">
+                                                        <img class="task-icon task-on-time" src="icons/Vector.svg" alt="">
+                                                    </div>
+                                                <% } %>
+                                                <div class="task-date">
+                                                    <p class="task-date-home-text">Task from:</p>
+                                                    <p class="task-date-home-text"><%= ACTIVE_TASKS[i].dateMadeStr %></p>
+                                                </div>
+                                                
+                                        </div>
+                                        </div>
+                                            
+                                            <div class="bin-col button-text-bin">
+                                                <div class="task-desc-bin"><p class="task-desc-home"><%= ACTIVE_TASKS[i].task %></p></div>
+                                                <div class="task-complete-home">
+                                                    <button class="task-button"><a class="task-button-complete" href="/complete/<%= ACTIVE_TASKS[i]._id%>">Mark as Completed</a></button>
+                                                </div>
+                                            </div>
+                                            
+                                    </div>
+                                     <% } %>
+                            </div>
+                            <div class="see-all-tasks">
+                                <button><a href="/tasks">See all Tasks</a></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+                    
+     <!--   <div>
+            <% if (ACTIVE_TASKS.length == 0) { %>
+                <h2>Get Busy!</h2>
+            <% } else { %>
+                <h2>Let's Get to Work</h2>
+                <% ACTIVE_TASKS.forEach(function(task) { %>
+                <div>
+                    <h3><%= task.taskTitle %></h3>    
+                    <p><%= task.task %></p>
+                    <small>Date Created: <%=task.dateMade%></small><br>
+                    <small>Deadline: <%=task.deadline%></small><br>
+                    <button><a href="/complete/<%= task._id%>">Mark as Completed</a></button>
+                    <button><a href="/delete/<%=task._id%>">Delete Task</a></button>
+                </div>
+            <% })} %>
+        </div>
+        <div>
+            <h2>Accomplishments</h2>
+            <% COMP_TASKS.forEach(function(task) { %>
+                <div>
+                    <h3><%= task.taskTitle %></h3>    
+                    <p><%= task.task %></p>
+                    <small><%= task.dateComp %></small><br>
+                    <button><a href="/return/<%= task._id%>">Return to To-Do List</a></button>
+                </div>
+            <% }) %>
+        </div> -->
+   </body>
+   
+   
+</html>

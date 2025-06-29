@@ -1,0 +1,813 @@
+body {
+    margin: 0;
+    background-color: #F3F4F6;
+}
+h1 {
+    font-family: Outfit;
+    font-size: 38px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+h2 {
+    font-family: Outfit;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal; 
+}
+
+h3 {
+    color: #04121C;
+    text-align: left;
+    font-family: "Montserrat";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+p {
+    font-family: Outfit;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal; 
+}
+
+li {
+    color: #04121C;
+    font-family: "Nunito Sans", sans-serif;;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 2% 0%;
+}
+
+a {
+    font-family: Outfit;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration: none;
+
+}
+
+a:visited {
+    color: inherit;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+
+
+.month-header {
+    font-family: Outfit;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;    
+}
+
+.make-it-white {
+    color: #F3F4F6;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.dashboard-page {
+    display: flex;
+    width: 88%;
+    gap: 1.5%;
+}
+
+.dashboard-inner {
+    width: 100%;
+}
+
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    margin: 2% 12%;
+}
+
+.side-nav {
+    /* width: 180px; */
+    width: 14%;
+    margin-top: 50px;
+}
+
+.home {
+    width: 10%;
+}
+.home button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border: none;
+    background: transparent;
+}
+
+.home button a {
+    padding: 10px 20px;
+}
+
+.add-task {
+    width: 15%;
+}
+
+.add-task button {
+    width: 100%;
+    height: 100%;
+    border-radius: 28px;
+    background-color: #4C7A9B;
+    border: 1px solid #4C7A9B;
+}
+
+.add-task button a {
+    padding: 5% 20%;
+    color: #F3F4F6;
+}
+
+.bin-50 {
+    display: flex;
+    width: 100%;
+}
+
+.bin-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-upper {
+    gap: 5%;
+}
+.dashboard-upper-left {
+    background-color: #4C7A9B;
+    border-radius: 10px;
+    
+}
+.bin-welcome {
+    justify-content: space-between;
+}
+
+.inner-bin-welcome {
+    padding: 2% 5%;
+    gap: 20%;
+    
+}
+
+.inner-bin-welcome img {
+    object-fit: contain;
+}
+
+.dashboard-left {
+    width: 55%;
+}
+
+.dashboard-right {
+    width: 40%;
+}
+
+.bin-tasks {
+    display: flex;
+    flex-direction: column;
+    column-gap: 50px;
+}
+
+.dashboard-card {
+    background-color: #F9F9FA;
+    border-radius: 10px;
+    height: 100%;
+    
+}
+
+.task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 3%;
+    padding: 1%;
+    min-height: 100px;
+}
+
+.task-home {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5%;
+    margin-bottom: 5%;
+}
+
+.task-icon {
+    padding: 2%;
+}
+
+.task-desc {
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.bin-task-icon-delayed {
+    border: 10px solid #E1B2B2;
+    border-radius: 99%;
+    background-color: #E1B2B2;
+}
+
+.bin-task-icon-on-time {
+    border: 10px solid #BFE1B2;
+    border-radius: 99%;
+    background-color: #BFE1B2;
+}
+
+.task-on-time {
+    filter: brightness(0) saturate(100%) invert(34%) sepia(100%) saturate(345%) hue-rotate(58deg) brightness(99%) contrast(89%);
+}
+
+.task-delayed {
+    filter: brightness(0) saturate(100%) invert(31%) sepia(8%) saturate(5220%) hue-rotate(317deg) brightness(91%) contrast(84%);
+}
+
+.bin-chart {
+    max-width: 30%;
+}
+
+.bin-chart img {
+    object-fit: contain;
+}
+.chart-img {
+    object-fit: contain;
+}
+
+.bin-calendar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 93%;
+}
+
+.calendar-month {
+    width: 15%;
+}
+
+.calendar-header-home {
+    display: flex;
+    text-align: center;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.calendar-header {
+    display: flex;
+    text-align: center;
+    flex-direction: row;
+    gap: 10px;
+    width: 50%;
+}
+
+.calendar-header button {
+    border: none;
+    background: transparent;
+}
+
+.calendar-header-home button {
+    border: none;
+    background: transparent;
+}
+
+.calendar-weekdays {
+    display: flex;
+    flex-direction: row;
+}
+
+.calendar-weekdays p {
+    text-align: center;
+    width: 14.25%;
+    margin-bottom: 2%;
+}
+.blank-date {
+    background-color: transparent;
+    width: 14.25%;
+}
+
+.bin-calendar-dates {
+    width: 100%;
+}
+
+.calendar-dates {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 0;
+}
+
+.calendar-dates li {
+    list-style: none;
+    width: 14.25%;
+    text-align: center;
+}
+
+.analytics-text {
+    width: 30%;
+}
+
+.analytics-bin {
+    align-items: center;
+    height: 100%;
+}
+.task-icon-date-home {
+    display: flex;
+    align-items: center;
+    padding-left: 3%;
+    gap: 5%;
+    width: 40%;
+}
+
+.title-date-bin {
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.task-title-home p {
+    margin-bottom: 0;
+}
+
+.button-text-bin {
+    margin-top: 5%;
+    width: 100%;
+}
+
+.task-desc-bin {
+    text-align: left;
+}
+
+.task-desc-home {
+    overflow: hidden;
+   display: -webkit-box;
+   -webkit-line-clamp: 2; /* number of lines to show */
+    line-clamp: 2; 
+   -webkit-box-orient: vertical;
+   text-align: left;
+   font-size: 14px;
+   font-weight: 300;
+}
+
+.task-complete-home {
+    width: 60%;
+    margin: 5% 0% 0% 20%;
+}
+
+.task-date-home p {
+
+}
+
+.task-date-home-text {
+    font-weight: 300;
+    font-size: 14px;
+}
+
+.task-date {
+    margin: 10px 0%;
+}
+
+.task-date p {
+    margin:0;
+    color: #828689;
+}
+
+.task-icon-date h3 {
+    margin-bottom: 0;
+}
+
+.task-title {
+    width: 30%;
+    text-align: center;
+}
+
+.task-progress {
+    width: 35%;
+}
+
+.task-progress p {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.task-complete {
+    width: 25%;
+    margin-left: 3%;
+}
+
+.task-button {
+    display: flex;
+    padding: 10px 35px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 28px;
+    background: #BECEDA;
+    margin-right: 2%;
+    border: none;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.task-button-complete {
+    color: #4C7A9B;
+}
+
+
+
+.left-lower-headings {
+    justify-content: space-between;
+    margin-top: 8%;
+}
+
+.left-lower-card {
+    width: 95%;
+}
+
+#active-tasks {
+    position: absolute;
+    display: none;
+}
+
+#comp-tasks {
+    position: absolute;
+    display: none;
+}
+
+
+.side-nav-panel {
+    
+    background-image: url("images/Rectangle\ 15.png");
+    object-fit: contain;
+    background-repeat: no-repeat;
+    z-index: 1000;
+    height: 500px;
+}
+
+.side-nav-button-bin {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 30px;
+    padding-top: 110px;
+    padding-left: 35px;
+}
+
+.side-nav-button-inactive {
+    background-color: transparent;
+    border: none;
+    
+}
+
+.side-nav-button-inactive img {
+    width: 24px;
+    
+}
+
+.side-nav-button-active {
+    background-color: transparent;
+    border: none;
+    
+}
+
+.side-nav-button-active img {
+    filter: invert(41%) sepia(57%) saturate(365%) hue-rotate(162deg) brightness(95%) contrast(86%);
+    width: 24px;
+}
+
+.calendar-page {
+    align-items: center;
+    margin-right: 12%;
+    width: 88%;
+}
+
+
+
+
+
+.calendar-page-header {
+    justify-content: center;
+    margin: 2% 0;
+    width: 100%;
+}
+
+.calendar-page-header h2 {
+    padding: 0px 10%; 
+}
+
+.home-button img {
+    filter: brightness(0) saturate(100%) invert(6%) sepia(27%) saturate(1316%) hue-rotate(162deg) brightness(93%) contrast(100%);
+    width: 24px;
+}
+
+.comp-task-list {
+    width: 100%;
+}
+
+
+
+.comp-task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+    padding: 0 2.5%;
+    margin-top: 2%;
+}
+
+.bin-task-button {
+    margin-right: 7%;
+}
+
+.archive-task-date {
+    width: 13%;
+}
+
+/* Pop Up Classes */
+
+.pop-up {
+    background-color: rgba(76, 122, 155, 0.2);
+    position: absolute;
+    width:100%;
+    height: 150vh;
+    display: none;
+}
+
+.task-form {
+    position: relative;
+    background-color: #F9F9FA;
+    width: 35%;
+    margin: 5% 32.5% 0 32.5%;
+}
+
+.task-form-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 10%;
+    padding: 1% 5% 5% 5%;
+    
+}
+
+.form-element {
+    margin: 4% 0;
+}
+
+.add-task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-task-header button {
+    width: 24px;
+    height: 24px;
+    border: none;
+    background-color: #F9F9FA;
+}
+
+.form-label {
+    font-family: Outfit;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    
+}
+
+.see-all-tasks {
+    width: 80%;
+    margin: 0 10%;
+}
+
+.see-all-tasks button{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 35px;
+    width: 100%;
+    border-radius: 28px;
+    background-color: #4C7A9B;
+    border: 1px solid #4C7A9B;
+}
+
+.see-all-tasks button a {
+    color: #F3F4F6;
+}
+
+.deadline-priority {
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.form-row {
+    width: 45%;
+    align-content: stretch;
+}
+
+.input-field{
+    border-radius: 7px;
+    font-size: 14px;
+    padding: 1%;
+    margin: 2% 0%;
+    border: 1px solid #D5D9DE;
+    
+}
+
+input[type="date"]::-webkit-datetime-edit { 
+    padding: 1%; 
+    font-family: Outfit;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+select {
+    -webkit-appearance: menulist-button;
+    padding: 5% 3%;
+    font-family: Outfit;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    height: 29.69px;
+    
+}
+
+option {
+    padding: 20%;
+
+}
+.dropdown-option {
+    height: 24px;
+}
+
+.pop-up-button-add {
+    font-family: Outfit;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border-radius: 28px;
+    background-color: #4C7A9B;
+    border: 1px solid #4C7A9B;
+    padding: 2% 8%;
+    color: #F9F9FA;
+}
+
+.pop-up-button-add {
+    cursor: pointer;
+}
+
+.pop-up-button-cancel {
+    font-family: Outfit;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration: none;
+    border-radius: 28px;
+    background-color: #F9F9FA;
+    border: 1px solid #4C7A9B;
+    padding: 2% 8%;
+    color: #4C7A9B;
+    margin-right: 10%;
+
+}
+
+.button-div {
+    margin-left: 55%;
+}
+
+/* calendar */
+
+.calendar-bin {
+    width: 100%;
+    gap: 5%;
+    justify-content: space-between;
+    min-height: 70vh;
+}
+
+.date-card {
+    align-items: center;
+    text-align: center;
+    width: 15%;
+}
+
+.task-title-bin-calendar {
+    width: 90%;
+}
+
+.high-priority {
+    background-color: #E1B2B2;
+    border-radius: 10px;  
+}
+
+.high-priority h3 {
+    color: #953B3B;
+}
+
+.mid-priority {
+    background-color: #E1DFB2;
+    border-radius: 10px;
+}
+
+.mid-priority h3 {
+    color: #666211;
+}
+
+.low-priority {
+    background-color: #BFE1B2;
+    border-radius: 10px;
+}
+
+.low-priority h3 {
+    color: #3F8026;
+}
+
+.calendar-task-title {
+    font-family: Outfit;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding: 10px;
+    text-align: center;
+    
+}
+/* archive */
+
+.archive {
+    width: 20%;
+}
+
+.archive-button {
+    width: 100%;
+}
+
+.archive button {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    background: transparent;
+}
+
+.archive button a {
+    padding: 10px 20px;
+    width: 100%;
+}
+
+.archive-button img {
+    filter: brightness(0) saturate(100%) invert(6%) sepia(27%) saturate(1316%) hue-rotate(162deg) brightness(93%) contrast(100%);
+    width: 24px;
+}
+
+.task-complete-archive {
+    width: 15%;
+
+}
+
+
+/* /tasks */
+
+.tasks-container {
+    width: 100%;
+}
+.task-bin {
+    width: 100%;
+}
+
+
+.task-icon-date-tasks {
+    display: flex;
+    align-items: center;
+    padding-left: 3%;
+    gap: 5%;
+    width: 20%;
+}
+
