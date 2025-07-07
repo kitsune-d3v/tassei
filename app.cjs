@@ -6,6 +6,7 @@ const axios = require("axios");
 const app = express();
 
 const {Schema, model} = mongoose;
+const imgUrls = ["images/solar_home-2-broken.svg", "images/solar_calendar-broken.svg", "images/solar_archive-check-broken.svg", "images/solar_archive-check-broken.svg"]
 
 
 mongoose.connect("mongodb+srv://kitsuned3v:jyWA0GlT8Yc1ngi4@cluster0.ztca7.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
@@ -48,12 +49,9 @@ function formatDate (date) {
   let formattedDate = dd + '-' + mm + '-' + yyyy;
   return formattedDate;
 }
-
-function createCharts (active_tasks, comp_tasks) {
-
-}
  
 app.get("/", async (req, res) => {
+  let imgUrl = imgUrls[0];
   (async () => {
     await Task
       .find({})
@@ -88,12 +86,13 @@ app.get("/", async (req, res) => {
             if (task.dateComp.setHours(0,0,0,0) == today.setHours(0,0,0,0))
               todaysComp.push(task);
           })
-          res.render("home", {ACTIVE_TASKS: active_tasks, COMP_TASKS: comp_tasks, TODAYS_TASKS: todaysTasks, TODAYS_COMP: todaysComp, TODAY:today})
+          res.render("home", {ACTIVE_TASKS: active_tasks, COMP_TASKS: comp_tasks, TODAYS_TASKS: todaysTasks, TODAYS_COMP: todaysComp, TODAY:today, imgUrls: imgUrl})
       })})()
   
   })
 
   app.get("/tasks", async(req, res) => {
+    let imgUrl = imgUrls[3];
     (async () => {
       await Task
         .find({})
@@ -128,11 +127,12 @@ app.get("/", async (req, res) => {
               if (task.dateComp.setHours(0,0,0,0) == today.setHours(0,0,0,0))
                 todaysComp.push(task);
             })
-            res.render("tasks", {ACTIVE_TASKS: active_tasks, COMP_TASKS: comp_tasks, TODAYS_TASKS: todaysTasks, TODAYS_COMP: todaysComp, TODAY:today})
+            res.render("tasks", {ACTIVE_TASKS: active_tasks, COMP_TASKS: comp_tasks, TODAYS_TASKS: todaysTasks, TODAYS_COMP: todaysComp, TODAY:today, imgUrl:imgUrl})
         })})()
   })
 
   app.get("/archive", async(req,res) => {
+    let imgUrl = imgUrls[3];
     (async () => {
       await Task
         .find({})
@@ -152,11 +152,12 @@ app.get("/", async (req, res) => {
               task.dateCompStr = formatDate(task.dateComp);
               task.dateMadeStr = formatDate(task.dateMade);
             })
-            res.render("archive", {COMP_TASKS: comp_tasks})
+            res.render("archive", {COMP_TASKS: comp_tasks, imgUrls: imgUrl})
         })})()
   })
 
   app.get("/calendar", async (req, res) => {
+    let imgUrl = imgUrls[1];
     (async () => {
       await Task
         .find({})
@@ -178,14 +179,10 @@ app.get("/", async (req, res) => {
               })
             })
             let today = new Date();
-            res.render("calendar", {ACTIVE_TASKS: active_tasks, COMP_TASKS: comp_tasks, TODAY:today, ALL_TASKS: records})
+            res.render("calendar", {ACTIVE_TASKS: active_tasks, COMP_TASKS: comp_tasks, TODAY:today, ALL_TASKS: records, imgUrls: imgUrl})
         })})()
     
     })
-
-.get("/create", (req, res) => {
-  res.render("create")
-})
 
 .post("/create", (req, res) => {
   if(req.body.taskTitle == "" && req.body.taskDesc == ""){
@@ -231,7 +228,7 @@ app.get("/", async (req, res) => {
     await Task
       .findOneAndUpdate({_id: req.params._id}, {$set: {active: false, dateComp: taskComp}})
       .then (function() {
-          res.redirect("/");
+        res.redirect(req.get("Referrer"));
       })})()
 })
 
@@ -250,41 +247,9 @@ app.get("/", async (req, res) => {
     await Task
       .findByIdAndDelete({_id: req.params._id})
       .then (function() {
-          res.redirect("/");
+        res.redirect(req.get("Referrer"));
       })})()
 })
-.get("/schedule", (req, res) => {
-  const DEPARTMENTS = ["Human Resources", "Informatics", "General Management", "Marketing"]
-  res.render("schedule", {DEPARTMENTS: DEPARTMENTS})
-})
-
-.post("/schedule", (req, res) => {
-  res.redirect("/schedule")
-})
-
-.get("/schedule/create", (req,res) => {
-  console.log(department_list);
-})
-
-.get("/login", (req, res) => {
-  res.render("login");
-})
-
-.post("/login", (req, res) => {
-  user_creds.user = req.body.userName
-  user_creds.password = req.body.password
-  console.log(user_creds);
-  res.redirect("/home");
-  // Check if user exists in DB
-  // Check if creds are valid (import function)
-  //encode/decode??????
-
-})
-
-.get("/home", (req, res) => {
-  res.render("home")
-})
-
 
 const PORT = process.env.PORT || 8000;
 

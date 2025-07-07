@@ -14,21 +14,8 @@
    <body>
     <div id="page" class="page">
         <div id="pop-up" class="pop-up">
-
         </div>
-        <div class="top-nav">
-            <div class="home">
-                <button class="home-button">
-                    <img src="images/solar_archive-check-broken.svg" alt="">
-                        <a>Tasks</a>
-                </button>
-            </div>
-            <div class="add-task">
-                <button>
-                    <a href="/create">Add Task</a>
-                </button>
-            </div>
-        </div>
+        <%- include("partials/top-nav") %>
         <div class="dashboard-page">
             <%- include("partials/side-nav") -%>
             <div class="bin-col tasks-container">

@@ -1,4 +1,4 @@
-
+// Global Variables
 const MONTHS = [
     {
         name: "January",
@@ -62,7 +62,43 @@ const MONTHS = [
     }]
 
 const CALENDAR_DAYS = document.getElementById("calendar-dates")
+const topNavImg = document.getElementById("top-nav-img");
+const topNavA = document.getElementById("top-nav-a");
+let imgUrl = window.location.href;
+imgUrl = imgUrl.substring(21, imgUrl.length);
+let activeIcon;
 
+switch(imgUrl) {
+    
+    case "/":
+        topNavImg.src="images/solar_home-2-broken.svg"
+        topNavA.innerHTML="Home";
+        activeIcon = document.getElementById("home-icon");
+        activeIcon.classList.remove("side-nav-button-inactive");
+        activeIcon.classList.add("side-nav-button-active")
+        break;
+    case "/calendar":
+        topNavImg.src="images/solar_calendar-broken.svg"
+        topNavA.innerHTML="Calendar";
+        activeIcon = document.getElementById("calendar-icon");
+        activeIcon.classList.remove("side-nav-button-inactive");
+        activeIcon.classList.add("side-nav-button-active")
+        break;
+    case "/archive":
+        topNavImg.src="images/solar_archive-complete.svg"
+        topNavA.innerHTML="Archive";
+        activeIcon = document.getElementById("archive-icon");
+        activeIcon.classList.remove("side-nav-button-inactive");
+        activeIcon.classList.add("side-nav-button-active")
+        break;
+    case "/tasks":
+        topNavImg.src="images/solar_tasks-todo.svg"
+        topNavA.innerHTML="Tasks";
+        activeIcon = document.getElementById("tasks-icon");
+        activeIcon.classList.remove("side-nav-button-inactive");
+        activeIcon.classList.add("side-nav-button-active")
+        break;
+}
 
 
 function generateCalendar (){
@@ -78,7 +114,6 @@ function generateCalendar (){
             generateEmptyDays(dayOfWeek)
             generateCalendarDates(month)
             }
-          //  generate Calendar
        });
 }
 

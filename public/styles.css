@@ -1,3 +1,4 @@
+/* Elements and General Styles */
 body {
     margin: 0;
     background-color: #F3F4F6;
@@ -85,6 +86,18 @@ button:hover {
     margin: 0;
 }
 
+.bin-50 {
+    display: flex;
+    width: 100%;
+}
+
+.bin-col {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Dashboard Styles */
+
 .dashboard-page {
     display: flex;
     width: 88%;
@@ -95,6 +108,8 @@ button:hover {
     width: 100%;
 }
 
+/* Top-Nav Styles */
+
 .top-nav {
     display: flex;
     justify-content: space-between;
@@ -102,16 +117,10 @@ button:hover {
     margin: 2% 12%;
 }
 
-.side-nav {
-    /* width: 180px; */
-    width: 14%;
-    margin-top: 50px;
-}
-
-.home {
+.route-icon-div {
     width: 10%;
 }
-.home button {
+.route-icon-div button {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -120,7 +129,7 @@ button:hover {
     background: transparent;
 }
 
-.home button a {
+.route-icon-div button a {
     padding: 10px 20px;
 }
 
@@ -141,15 +150,54 @@ button:hover {
     color: #F3F4F6;
 }
 
-.bin-50 {
-    display: flex;
-    width: 100%;
+/* Side-Nav Styles */
+
+.side-nav {
+    width: 14%;
+    margin-top: 50px;
 }
 
-.bin-col {
+.side-nav-panel {
+    
+    background-image: url("images/Rectangle\ 15.png");
+    object-fit: contain;
+    background-repeat: no-repeat;
+    height: 500px;
+}
+
+.side-nav-button-bin {
     display: flex;
     flex-direction: column;
+    height: 100%;
+    gap: 23px;
+    padding-top: 110px;
+    padding-left: 35px;
 }
+
+.side-nav-button-inactive {
+    background-color: transparent;
+    border: none; 
+}
+
+.side-nav-button-inactive img {
+    width: 24px;
+    padding: 4px 4px;
+}
+
+.side-nav-button-active {
+    border: none; 
+    background-color: #F3F4F6;
+    border-radius: 8px;
+}
+
+.side-nav-button-active img {
+    filter: invert(41%) sepia(57%) saturate(365%) hue-rotate(162deg) brightness(95%) contrast(86%);
+    width: 24px;
+    padding: 7px 4px;
+}
+
+
+/* /home */
 
 .dashboard-upper {
     gap: 5%;
@@ -447,7 +495,7 @@ button:hover {
     width: 95%;
 }
 
-#active-tasks {
+/* #active-tasks {
     position: absolute;
     display: none;
 }
@@ -455,48 +503,22 @@ button:hover {
 #comp-tasks {
     position: absolute;
     display: none;
-}
+} */
 
 
-.side-nav-panel {
-    
-    background-image: url("images/Rectangle\ 15.png");
-    object-fit: contain;
-    background-repeat: no-repeat;
-    z-index: 1000;
-    height: 500px;
-}
 
-.side-nav-button-bin {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    gap: 30px;
-    padding-top: 110px;
-    padding-left: 35px;
-}
 
-.side-nav-button-inactive {
-    background-color: transparent;
-    border: none;
-    
-}
 
-.side-nav-button-inactive img {
-    width: 24px;
-    
-}
 
-.side-nav-button-active {
-    background-color: transparent;
-    border: none;
-    
-}
 
-.side-nav-button-active img {
-    filter: invert(41%) sepia(57%) saturate(365%) hue-rotate(162deg) brightness(95%) contrast(86%);
-    width: 24px;
-}
+
+
+
+
+
+
+
+
 
 .calendar-page {
     align-items: center;
@@ -556,6 +578,38 @@ button:hover {
     display: none;
 }
 
+.pop-up-button-add {
+    font-family: Outfit;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border-radius: 28px;
+    background-color: #4C7A9B;
+    border: 1px solid #4C7A9B;
+    padding: 2% 8%;
+    color: #F9F9FA;
+}
+
+.pop-up-button-add {cursor: pointer;}
+
+.pop-up-button-cancel {
+    font-family: Outfit;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration: none;
+    border-radius: 28px;
+    background-color: #F9F9FA;
+    border: 1px solid #4C7A9B;
+    padding: 2% 8%;
+    color: #4C7A9B;
+    margin-right: 10%;
+
+}
+
+/* Form Styles */
 .task-form {
     position: relative;
     background-color: #F9F9FA;
@@ -597,43 +651,18 @@ button:hover {
     
 }
 
-.see-all-tasks {
-    width: 80%;
-    margin: 0 10%;
-}
-
-.see-all-tasks button{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px 35px;
-    width: 100%;
-    border-radius: 28px;
-    background-color: #4C7A9B;
-    border: 1px solid #4C7A9B;
-}
-
-.see-all-tasks button a {
-    color: #F3F4F6;
-}
-
-.deadline-priority {
-    justify-content: space-between;
-    align-items: flex-start;
-}
-
 .form-row {
     width: 45%;
     align-content: stretch;
 }
 
 .input-field{
+    font-family: Outfit;
     border-radius: 7px;
     font-size: 14px;
     padding: 1%;
     margin: 2% 0%;
-    border: 1px solid #D5D9DE;
-    
+    border: 1px solid #D5D9DE; 
 }
 
 input[type="date"]::-webkit-datetime-edit { 
@@ -657,50 +686,41 @@ select {
     
 }
 
-option {
-    padding: 20%;
+option {padding: 20%;}
 
-}
-.dropdown-option {
-    height: 24px;
+.dropdown-option {height: 24px;}
+
+/* Dashboard Panel Right - Tasks */
+
+.see-all-tasks {
+    width: 80%;
+    margin: 0 10%;
 }
 
-.pop-up-button-add {
-    font-family: Outfit;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
+.see-all-tasks button{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 35px;
+    width: 100%;
     border-radius: 28px;
     background-color: #4C7A9B;
     border: 1px solid #4C7A9B;
-    padding: 2% 8%;
-    color: #F9F9FA;
 }
 
-.pop-up-button-add {
-    cursor: pointer;
+.see-all-tasks button a {color: #F3F4F6;}
+
+.deadline-priority {
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
-.pop-up-button-cancel {
-    font-family: Outfit;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    text-decoration: none;
-    border-radius: 28px;
-    background-color: #F9F9FA;
-    border: 1px solid #4C7A9B;
-    padding: 2% 8%;
-    color: #4C7A9B;
-    margin-right: 10%;
 
-}
 
-.button-div {
-    margin-left: 55%;
-}
+
+
+
+.button-div {margin-left: 55%;}
 
 /* calendar */
 
@@ -719,7 +739,22 @@ option {
 
 .task-title-bin-calendar {
     width: 90%;
+    overflow: hidden;
 }
+
+.calendar-task-title {
+    font-family: Outfit;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding: 10px;
+    text-align: center;
+    
+}
+
+
+/* priority styling */
 
 .high-priority {
     background-color: #E1B2B2;
@@ -748,16 +783,7 @@ option {
     color: #3F8026;
 }
 
-.calendar-task-title {
-    font-family: Outfit;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    padding: 10px;
-    text-align: center;
-    
-}
+
 /* archive */
 
 .archive {
@@ -801,7 +827,6 @@ option {
 .task-bin {
     width: 100%;
 }
-
 
 .task-icon-date-tasks {
     display: flex;

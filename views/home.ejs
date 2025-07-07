@@ -9,7 +9,6 @@
         <link rel="stylesheet" href="styles.css">
         <meta name="viewport" content="width=device-width, user-scalable=no" />
         <script src="script.js" defer></script>
-        
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         
         
@@ -17,12 +16,10 @@
    <body>
         <div id="page" class="page">
             <div id="pop-up" class="pop-up">
-
             </div>
             <%- include("partials/top-nav") -%>
             <div id="dashboard-page" class="dashboard-page">
                 <%- include("partials/side-nav") -%>
-                
                 <div id="dashboard-inner" class="bin-col dashboard-inner">
                     <div class="bin-50 dashboard-upper">
                         <div class="bin-col dashboard-left">
@@ -175,33 +172,7 @@
             </div>
         </div>
                     
-     <!--   <div>
-            <% if (ACTIVE_TASKS.length == 0) { %>
-                <h2>Get Busy!</h2>
-            <% } else { %>
-                <h2>Let's Get to Work</h2>
-                <% ACTIVE_TASKS.forEach(function(task) { %>
-                <div>
-                    <h3><%= task.taskTitle %></h3>    
-                    <p><%= task.task %></p>
-                    <small>Date Created: <%=task.dateMade%></small><br>
-                    <small>Deadline: <%=task.deadline%></small><br>
-                    <button><a href="/complete/<%= task._id%>">Mark as Completed</a></button>
-                    <button><a href="/delete/<%=task._id%>">Delete Task</a></button>
-                </div>
-            <% })} %>
-        </div>
-        <div>
-            <h2>Accomplishments</h2>
-            <% COMP_TASKS.forEach(function(task) { %>
-                <div>
-                    <h3><%= task.taskTitle %></h3>    
-                    <p><%= task.task %></p>
-                    <small><%= task.dateComp %></small><br>
-                    <button><a href="/return/<%= task._id%>">Return to To-Do List</a></button>
-                </div>
-            <% }) %>
-        </div> -->
+     
    </body>
    
    

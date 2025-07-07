@@ -1,3 +1,4 @@
+//global variables
 const ALL_TASKS = JSON.parse(document.currentScript.getAttribute("data-active"))
 const MONTHS = [
     {
@@ -59,11 +60,46 @@ const MONTHS = [
         name: "December",
         days: 31,
         number: 12
-    }]
-
+}]
 var today = new Date();
+let currentMonth = today.getMonth();
 
-currentMonth = today.getMonth();
+const topNavImg = document.getElementById("top-nav-img");
+const topNavA = document.getElementById("top-nav-a");
+let imgUrl = window.location.href;
+imgUrl = imgUrl.substring(21, imgUrl.length);
+
+let activeIcon;
+switch(imgUrl) {
+    case "/":
+        topNavImg.src="images/solar_home-2-broken.svg"
+        topNavA.innerHTML="Home";
+        activeIcon = document.getElementById("home-icon");
+        activeIcon.classList.remove("side-nav-button-inactive");
+        activeIcon.classList.add("side-nav-button-active")
+        break;
+    case "/calendar":
+        topNavImg.src="images/solar_calendar-broken.svg"
+        topNavA.innerHTML="Calendar";
+        activeIcon = document.getElementById("calendar-icon");
+        activeIcon.classList.remove("side-nav-button-inactive");
+        activeIcon.classList.add("side-nav-button-active")
+        break;
+    case "/archive":
+        topNavImg.src="images/solar_archive-complete.svg"
+        topNavA.innerHTML="Archive";
+        activeIcon = document.getElementById("archive-icon");
+        activeIcon.classList.remove("side-nav-button-inactive");
+        activeIcon.classList.add("side-nav-button-active")
+        break;
+    case "/tasks":
+        topNavImg.src="images/solar_tasks-todo.svg"
+        topNavA.innerHTML="Tasks";
+        activeIcon = document.getElementById("tasks-icon");
+        activeIcon.classList.remove("side-nav-button-inactive");
+        activeIcon.classList.add("side-nav-button-active")
+        break;
+}
 
 function formatDate (date) {
     let yyyy = date.getFullYear();
@@ -76,24 +112,17 @@ function formatDate (date) {
   }
 
 function generateMonthTitle (date) {
-    console.log("This is the date for the month title function:" + date)
     const day = date.getDay();
-    console.log("This is the day of the week number: "+ day)
     const year = date.getFullYear();
     let month;
     
-    
     let dateForMonth = new Date();
-    //console.log("This is the date" + dateForMonth)
-    //let month;
 
     if (day < 6) {
         const distanceToMonday = day + 1
-        console.log("This is distance to Monday:" + distanceToMonday)
         dayForMonth = date.getDay() + distanceToMonday;
-        console.log("This is day for Month : " + dayForMonth)
         dateForMonth.setDate(dayForMonth)
-        console.log("This date renders the Title" + dateForMonth)
+        
         month = date.toLocaleString('default', { month: 'long' });
         document.getElementById("month-header").innerHTML = `${month} ${year}`;
     } else {
@@ -101,10 +130,10 @@ function generateMonthTitle (date) {
         document.getElementById("month-header").innerHTML = `${month} ${year}`;
     }
     document.getElementById("month-header").innerHTML = `${month} ${year}`;
-    //console.log(month)
+
 }
 
-generateMonthTitle(today);
+
 
 function generateWeek (date){
     let thisWeeksDates = [];
@@ -199,7 +228,6 @@ function nextMonth(monthChange){
         taskListforDate.forEach((task) => {
             let taskDetails;
             let taskPriority;
-            console.log(task)
             if (task.priority == 1){
                 taskPriority = "high-priority"
                 taskDetails = `<h3 class="calendar-task-title">${task.taskTitle}</h3></div>`
@@ -223,6 +251,8 @@ function nextMonth(monthChange){
     })
 
 }
+
+// Required on every page
 
 function popUpTask (){
     let popUp = document.getElementById("pop-up")
@@ -268,6 +298,7 @@ function popUpTask (){
     } 
 }
 
+// Require on Every Page
 function closePopUp() {
     let popUp = document.getElementById("pop-up");
     popUp.innerHTML = ``;
@@ -347,7 +378,7 @@ function archiveNextMonth(increment){
 
 }
 
-
+generateMonthTitle(today);
 
 
 
